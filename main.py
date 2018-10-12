@@ -45,6 +45,9 @@ time_form = """
         <input type="submit" value="Validate" />
 </form>
 """
+
+def display_time_form():
+    return time_form.format(hours='', hours_error='', minutes='', minutes_error='' ) 
 app.run()
 
 # @app.route("/test_route", methods=["GET", "POST"])
