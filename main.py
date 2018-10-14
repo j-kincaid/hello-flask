@@ -23,11 +23,6 @@ form = """
 def index():
     return form
 
-@app.route("/hello", methods=['POST'])
-def hello():
-    first_name = request.form['first_name']
-    return '<h1>Hello, ' + first_name + '</h1>'
-
 time_form = """
 <style>
     .error {{ color: red; }}
