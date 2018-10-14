@@ -62,7 +62,7 @@ def is_integer(num):
 
 
 app.route('/validate-time', methods=['POST'])
-def validate-time():
+def validate_time():
 
     hours = request.form['hours']
     minutes = request.form['minutes']
