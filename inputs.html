@@ -1,54 +1,61 @@
+<!doctype html>
+<body>
 
-<form method='POST'>
+    <style>
+        br {
+            margin-bottom: 20px;
+        }
+    </style>
 
-    <label>type=text
-        <input name="user_name" type = "text" />
-    </label>
+    <form method='POST'>
 
-    <br/>
+        <label>type=text
+            <input name="user_name" type = "text" />
+        </label>
 
-    <label>type=password
-        <input name="user_password" type = "password" />
-    </label>
+        <br/>
 
+        <label>type=password
+            <input name="user_password" type = "password" />
+        </label>
 
-    <br/>
+        <br/>
 
+        <label>type=email
+            <input name="user_email" type = "email" />
+        </label>
 
-    <label>type=email
-        <input name="user_email" type = "email" />
-    </label>
+        <br/>
 
+        <input name="shopping-cart-id" value="0129384" type="hidden" />
 
-    <br/>
+        <br />
 
-    <input name="shopping-cart-id" value="0129384" type="hidden" />
+        <label>Ketchup
+            <input type="checkbox" name="ch1" value="first-ch" />
+        </label>
 
-    <br />
+        <br />
 
-    <label>Ketchup
-        <input type="checkbox" name="ch1" value="first-ch" />
-    </label>
+        <label>Mustard
+            <input type="checkbox" name="ch2" value="second-ch" />
+        </label>
 
-    <br />
+        <br />
 
-    <label>Mustard
-        <input type="checkbox" name="ch2" value="second-ch" />
-    </label>
+        <label>Small
+            <input type="radio" name="coffee-size" value="sm" />
+        </label>
 
-    <br />
+        <label>Medium
+            <input type="radio" name="coffee-size" value="med" />
+        </label>
 
-    <label>Small
-        <input type="radio" name="coffee-size" value="sm" />
-    </label>
+        <label>Large
+            <input type="radio" name="coffee-size" value="lg" />
+        </label>
 
+    </form>
 
-    <label>Medium
-        <input type="radio" name="coffee-size" value="med" />
-    </label>
-
-    <label>Large
-        <input type="radio" name="coffee-size" value="lg" />
-    </label>
-
-</form>
+</body>
+</html>
