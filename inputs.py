@@ -1,3 +1,9 @@
+from flask import Flask, request
+
+app = Flask(__name__)
+app.config['DEBUG'] = True # a watchdog like inotify reloader
+
+
 @app.route("/form-inputs")
 def display_form_inputs():
     return """
@@ -77,5 +83,16 @@ def display_form_inputs():
         </label>
 
     </form>
-</body>
-</html>
+    """
+    
+    
+@app.route("/form-inputs", methods=['POST'])
+def print_form_values():
+    resp = ""
+    for field in request.form.keys():
+        resp += "<b>{key}</b>: {value}<br>", format(key=field, value=request.form[field])
+
+    return resp
+
+
+app.run()
