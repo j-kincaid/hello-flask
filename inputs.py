@@ -1,98 +1,74 @@
 from flask import Flask, request
 
 app = Flask(__name__)
-app.config['DEBUG'] = True # a watchdog like inotify reloader
+app.config['DEBUG'] = True
 
 
 @app.route("/form-inputs")
 def display_form_inputs():
     return """
-<style>
-        br {
-            margin-bottom: 20px;
-        }
+    <style>
+    br {margin-bottom: 20px;}
     </style>
     <form method='POST'>
         <label>type=text
-            <input name="user_name" type = "text" />
+            <input name="user-name" type="text" />
         </label>
-
-        <br/>
-
+        <br>
         <label>type=password
-            <input name="user_password" type = "password" />
+            <input name="user-password" type="password" />
         </label>
-
-        <br/>
-
+        <br>
         <label>type=email
-            <input name="user_email" type = "email" />
+            <input name="user-email" type="email" />
         </label>
-
-        <br/>
-
+        <br>
         <input name="shopping-cart-id" value="0129384" type="hidden" />
-
-        <br />
-
+        <br>
         <label>Ketchup
-            <input type="checkbox" name="ch1" value="first-ch" />
+            <input type="checkbox" name="cb1" value="first-cb" />
         </label>
-
-        <br />
-
+        <br>
         <label>Mustard
-            <input type="checkbox" name="ch2" value="second-ch" />
+            <input type="checkbox" name="cb2" value="second-cb" />
         </label>
-
-        <br />
-
+        <br>
         <label>Small
             <input type="radio" name="coffee-size" value="sm" />
         </label>
-
-        <br />
-
         <label>Medium
             <input type="radio" name="coffee-size" value="med" />
         </label>
-
-        <br />
-
         <label>Large
             <input type="radio" name="coffee-size" value="lg" />
         </label>
-
-        <br />
-
-
-        <label>Your Life Story
+        <br>
+        <label>Your life story
             <textarea name="life-story"></textarea>
         </label>
-
-        <br />
-
+        <br>
         <label>LaunchCode Hub
             <select name="lc-hub">
                 <option value="kc">Kansas City</option>
                 <option value="mia">Miami</option>
-                <option value="ri">Providence</option>value="sea">Seattle</option>
+                <option value="ri">Providence</option>
+                <option value="sea">Seattle</option>
                 <option value="pdx">Portland</option>
-
             </select>
         </label>
-
+        <br>
+        <input type="submit" />
     </form>
     """
-    
-    
+
+
 @app.route("/form-inputs", methods=['POST'])
 def print_form_values():
     resp = ""
     for field in request.form.keys():
-        resp += "<b>{key}</b>: {value}<br>", format(key=field, value=request.form[field])
+        resp += "<b>{key}</b>: {value}<br>".format(key=field, value=request.form[field])
 
     return resp
-
+    
 
 app.run()
