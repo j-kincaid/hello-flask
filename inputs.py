@@ -1,15 +1,12 @@
-<!doctype html>
-<html>
-<body>
-
-    <style>
+@app.route("/form-inputs")
+def display_form_inputs():
+    return """
+<style>
         br {
             margin-bottom: 20px;
         }
     </style>
-
     <form method='POST'>
-
         <label>type=text
             <input name="user_name" type = "text" />
         </label>
@@ -20,14 +17,11 @@
             <input name="user_password" type = "password" />
         </label>
 
-
         <br/>
-
 
         <label>type=email
             <input name="user_email" type = "email" />
         </label>
-
 
         <br/>
 
@@ -51,16 +45,37 @@
             <input type="radio" name="coffee-size" value="sm" />
         </label>
 
+        <br />
 
         <label>Medium
             <input type="radio" name="coffee-size" value="med" />
         </label>
 
+        <br />
+
         <label>Large
             <input type="radio" name="coffee-size" value="lg" />
         </label>
 
-    </form>
+        <br />
 
+
+        <label>Your Life Story
+            <textarea name="life-story"></textarea>
+        </label>
+
+        <br />
+
+        <label>LaunchCode Hub
+            <select name="lc-hub">
+                <option value="kc">Kansas City</option>
+                <option value="mia">Miami</option>
+                <option value="ri">Providence</option>value="sea">Seattle</option>
+                <option value="pdx">Portland</option>
+
+            </select>
+        </label>
+
+    </form>
 </body>
 </html>
