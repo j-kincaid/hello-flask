@@ -18,7 +18,7 @@ form = """
 
 @app.route("/")
 def index():
-    return form
+    return 
 
 @app.route("/hello", methods=['POST'])
 def hello():
