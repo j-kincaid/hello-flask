@@ -21,5 +21,4 @@ def hello():
     template = jinja_env.get_template('hello_greeting.html')
     return template.render(name=first_name)
 
-
 app.run()
