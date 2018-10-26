@@ -1,8 +1,29 @@
 from flask import Flask, request
 
 app = Flask(__name__)
+app.config['DEBUG'] = True
 
-app.config['DEBUG'] = True      # displays runtime errors in the browser, too
+form = """
+<!doctype html>
+<html>
+    <body>
+        <form action="/hello" method="post">
+            <label for="first-name">First Name:</label>
+            <input id="first-name" type="text" name="first_name" />
+            <input type="submit" />
+        </form>
+    </body>
+</html>
+"""
+
+@app.route("/")
+def index():
+    return form
+
+@app.route("/hello", methods=['POST'])
+def hello():
+    first_name = request.form['first_name']
+    return '<h1>Hello, ' + first_name + '</h1>'
 
 
 time_form = """
@@ -34,15 +55,16 @@ def is_integer(num):
     except ValueError:
         return False
 
+
 @app.route('/validate-time', methods=['POST'])
 def validate_time():
- #### Take values from submitted form data requests
 
+ #### Take values from submitted form data requests
     hours = request.form['hours']
     minutes = request.form['minutes']
 
-    hours_error =''
-    minutes_error =''
+    hours_error = ''
+    minutes_error = ''
 
 ####### testing the try/except block ############
 
@@ -52,10 +74,11 @@ def validate_time():
         hours_error = 'Not a valid integer'
             # If it doesn't validate, I want to wipe it out:
         hours = ''
-    else: 
+
+    else:
         hours = int(hours)
         if hours > 23 or hours < 0:
-            hours_error = 'Hour value out of range'
+            hours_error = 'Hour value out of range (0-23)'
             # If it doesn't validate, I want to wipe it out:
             hours = ''
 
@@ -66,10 +89,12 @@ def validate_time():
         minutes_error = 'Not a valid integer'
         minutes = ''
     else:
-        minutes= int(minutes)
+        minutes = int(minutes)
         if minutes > 59 or minutes < 0:
             minutes_error = 'Minutes value out of range (0-59)'
-            minutes = '' # The invalid values will not be 
+            minutes = ''
+            
+            # The invalid values will not be 
             # reinserted into the form. 
 
     if not minutes_error and not hours_error:
@@ -80,7 +105,8 @@ def validate_time():
     # redisplay the form with the error messages.
     # Go ahead and insert 
         return time_form.format(hours_error=hours_error, minutes_error= minutes_error, 
-        hours=hours, minutes=minutes)# This inserts into the placeholder variable 
+        hours=hours, minutes=minutes)
+        # This inserts into the placeholder variable 
         # hours however if one of the values is invalid, it will still
         # be in there.
         # if one of the {values} above is valid, it can stay in place and the user doesn't
