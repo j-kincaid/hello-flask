@@ -1,15 +1,22 @@
 <!doctype html>
 <html>
-    <head>
-        <style>
-        
-        </style>
-    </head>
-    <body>
-        <form action="/hello" method="post">
-            <label for="first-name">First Name:</label>
-            <input id="first-name" type="text" name="first_name" />
-            <input type="submit" />
-        </form>
-    </body>
+<head>
+    <style>
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Validate Time</h1>
+    <form method='POST'>
+        <label>Hours (24-hour format)
+            <input name="hours" type="text" value='{{hours}}' />
+        </label>
+        <p class="error">{{hours_error}}</p>
+        <label>Minutes
+            <input name="minutes" type="text" value='{{minutes}}' />
+        </label>
+        <p class="error">{{minutes_error}}</p>
+        <input type="submit" value="Validate" />
+    </form>
+</body>
 </html>
